@@ -8,6 +8,10 @@ app.get('/', function (req, res) {
   res.sendfile(__dirname + '/annyang-test.html')
 })
 
+app.get('/lib/annyang.min.js', function(req, res){
+	res.sendfile(__dirname+'/lib/annyang.min.js')
+})
+
 app.io.route('hello', function(req){
 	console.log('hello')
 	req.io.respond({
