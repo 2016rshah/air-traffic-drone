@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/1.1.0/annyang.min.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+			io = io.connect()
+		    if (annyang) {
+		        // Let's define our first command. First the text we expect, and then the function it   should call
+		        var commands = {
+		            'hello': function() {
+		            	console.log("hello")
+		                io.emit('hello', {hey:"server"}, function(data){
+		                	alert(data.success)
+		                })
+		            }
+		        };
+
+		        // Add our commands to annyang
+		        annyang.addCommands(commands);
+
+		        // Start listening. You can call this here, or attach this call to an event, button, etc.
+		        annyang.start();
+		    }
+
+		    else{
+		        alert("Error alert");
+		    }
+		 </script>
+	 </head>
+ </html>
