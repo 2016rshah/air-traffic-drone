@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/1.1.0/annyang.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/1.5.0/annyang.min.js"></script>
 		<script src="/socket.io/socket.io.js"></script>
 		<script>
 			io = io.connect()
@@ -12,6 +12,15 @@
 		                io.emit('hello', {hey:"server"}, function(data){
 		                	alert(data.success)
 		                })
+		            }, 
+		            ':callsign cleared for take off': function(callsign) {
+		            	console.log(callsign + " taking off")
+		            	io.emit('takeoff', {cs:callsign}, function(data){
+		            		console.log(data.success)
+		            	})
+		            },
+		            '*repeat': function(repeat){
+		            	console.log("didn't recognize: " + repeat)
 		            }
 		        };
 
